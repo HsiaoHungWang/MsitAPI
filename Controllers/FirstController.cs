@@ -13,26 +13,13 @@ namespace MsitAPI.Controllers
         {
             _dbContext = dbContext;
         }
-
-        [HttpGet]
-        public IActionResult Index()
-        {
-            System.Threading.Thread.Sleep(5000);
-            var users = new List<User>
-            {
-                new User { Id = 1, Name = "孝弘", Email = "xiao@example.com" },
-                new User { Id = 2, Name = "小明", Email = "ming@example.com" },
-                new User { Id = 3, Name = "佳玲", Email = "jialing@example.com" }
-            };
-
-            return Ok(users);
-         
-        }
+        
 
         [HttpGet("text")]
     
         public IActionResult GetText()
         {
+            //System.Threading.Thread.Sleep(5000);
             string message = "Hello 中文!!";
             return Content(message, "text/plain", System.Text.Encoding.UTF8);
         }
@@ -53,16 +40,11 @@ namespace MsitAPI.Controllers
             if (member == null || member.FileData == null)
             {
                 return NotFound("找不到對應的圖片資料");
-            }
-                
+            }                
 
             return File(member.FileData, "image/jpeg");
 
 
-
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "dog1.jpg");
-            var imageBytes = System.IO.File.ReadAllBytes(filePath);
-            return File(imageBytes, "image/jpeg");
         }
     }
 }
