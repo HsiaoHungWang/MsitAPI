@@ -1,0 +1,6 @@
+@MsitAPI_HostAddress = http://localhost:5278
+
+GET {{MsitAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
