@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MsitAPI.Models;
+using MsitAPI.Models.Dto;
 
 namespace MsitAPI.Controllers
 {
@@ -17,10 +18,13 @@ namespace MsitAPI.Controllers
 
         [HttpGet("text")]
     
-        public IActionResult GetText()
+        //public IActionResult GetText(string name, int age)
+        public IActionResult GetText([FromQuery] MyDdto myDto)
         {
             //System.Threading.Thread.Sleep(5000);
             string message = "Hello 中文!!";
+            message = $"Name: {myDto.Name}, Age: {myDto.Age}";
+
             return Content(message, "text/plain", System.Text.Encoding.UTF8);
         }
 

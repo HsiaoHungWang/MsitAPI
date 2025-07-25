@@ -173,6 +173,13 @@ namespace MsitAPI.Controllers
             return _context.Members.Any(e => e.MemberId == id);
         }
 
+        [HttpGet("exists")]
+        public async Task<IActionResult> CheckAccount(string name)
+        {
+
+            var exists = await _context.Members.AnyAsync(m => m.Name == name);
+            return Ok(new { exists });
+        }
         public static byte[] GenerateSalt(int size = 16)
         {
             //加密安全隨機數生成器。
