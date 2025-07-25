@@ -39,9 +39,10 @@ namespace MsitAPI.Controllers
                 Age = m.Age,
                 FileName = m.FileName
             });
-            
+
 
             return Ok(memberDtos);
+
         }
 
         // GET: api/Members/5
@@ -120,7 +121,7 @@ namespace MsitAPI.Controllers
                 fileName = dto.File.FileName;
                 dto.File.CopyTo(memoryStream);
             }
-            string filePath = Path.Combine(_host.WebRootPath, "images", fileName);
+            string filePath = Path.Combine(_host.WebRootPath, "avatars", fileName);
             //將檔案存到資料夾中
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
